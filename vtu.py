@@ -26,10 +26,10 @@ def grade(marks):
         return 0
 
 
+# Change the subject code according to the semester (41 -> 4th Sem, 51 -> 5th Sem)
 def start_index(subject_code):
-
     if '65' in subject_code:
-        return (4 + 32), 3
+        return (4 + 32), 3  # (Index of subject in html, Grade point for that subject)
     elif '66' in subject_code:
         return (4 + 40), 3
     elif '61' in subject_code:
@@ -50,11 +50,26 @@ cwd = os.path.join(os.getcwd(), 'chromedriver.exe')
 driver = webdriver.Chrome(cwd)
 driver.implicitly_wait(10)
 wb = xlwt.Workbook()
-ws = wb.add_sheet('MECH')
-k = 0
-for usn in range(1, 150):
+ws = wb.add_sheet('CSE')
+k = 1
+# Adding column titles
+ws.write(0, 0, "USN")
+ws.write(0, 1, "Name")
+ws.write(0, 2, "SGPA")
+ws.write(0, 3, "TotalGrade")
+for i in range(0, 8):
+    ws.write(0, 3 + (i * 8) + 1, "SC" + str(i + 1))
+    ws.write(0, 3 + (i * 8) + 2, "SN" + str(i + 1))
+    ws.write(0, 3 + (i * 8) + 3, "Internal" + str(i + 1))
+    ws.write(0, 3 + (i * 8) + 4, "External" + str(i + 1))
+    ws.write(0, 3 + (i * 8) + 5, "Total" + str(i + 1))
+    ws.write(0, 3 + (i * 8) + 6, "Result" + str(i + 1))
+    ws.write(0, 3 + (i * 8) + 7, "Grade" + str(i + 1))
+    ws.write(0, 3 + (i * 8) + 8, "GradeTotal" + str(i + 1))
+
+for usn in range(1, 10):
     try:
-        lsn = '1CR15ME' + str(usn).zfill(3)
+        lsn = '1MJ15IS' + str(usn).zfill(3)
         print('USN : ', lsn)
         driver.get("http://results.vtu.ac.in/vitaviresultcbcs2018/index.php")
         username = driver.find_element_by_name("lns")
@@ -68,6 +83,7 @@ for usn in range(1, 150):
         table = bs.findAll("td")
         sem = bs.findAll('b')
 
+        # Validate result to ensure that it belongs to the particular semester
         if sem[6].text == 'Semester : 6':
             total_grade = 0
             for m, value in enumerate(div[6:49:6]):
@@ -93,4 +109,4 @@ for usn in range(1, 150):
         alert = driver.switch_to.alert
         alert.accept()
 
-wb.save('MECH 6th Sem.xls')
+wb.save('result.xls')
