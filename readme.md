@@ -16,7 +16,13 @@
     
 ## What does it do??
  * It generates graphs for results and marks distributed.
- ![Alt text](https://raw.githubusercontent.com/vinit-kanani/Online_Retail/master/screenshots/Screenshot%20(2).png "Optional title")
- ![Alt text](https://raw.githubusercontent.com/vinit-kanani/Online_Retail/master/screenshots/Screenshot%20(2).png "Optional title")
- ![Alt text](https://raw.githubusercontent.com/vinit-kanani/Online_Retail/master/screenshots/Screenshot%20(2).png "Optional title")
+ 
+ - **Number of students in a given marks range**
+ ![Alt text](https://raw.githubusercontent.com/iamvinitk/VTU-Analysis/master/15CS61-bar.png "Optional title")
+ 
+ - **Number of students passed and failed in a given subject**
+ ![Alt text](https://raw.githubusercontent.com/iamvinitk/VTU-Analysis/master/15CS61.png "Optional title")
+ 
+ - **Number of students passed and failed overall**
+ ![Alt text](https://raw.githubusercontent.com/iamvinitk/VTU-Analysis/master/Overall.png "Optional title")
    
